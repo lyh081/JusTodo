@@ -1,0 +1,73 @@
+/* global */
+main{
+    padding-left:300px;
+}
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+      padding-left: 100px;
+    }
+}
+
+
+nav {
+    height: 70px;
+    margin-bottom : 20px;
+}
+
+#nav-mobile{
+    margin-right: 5%;
+}
+
+#sidenav-title{
+    height: 70px;
+}
+.sidenav >li>a{
+    font-size: 1.2rem;
+}
+
+.todo-container{
+    margin-left: 20px;
+}
+.chip {
+    margin: 0 10px;
+}
+.fake-browser-ui {
+    padding: 20px 0 0;
+    border-radius: 3px;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background: #ddd;
+    display: inline-block;
+    position: relative;
+    line-height: 0;
+}
+
+.fake-browser-ui .frame {
+    display: block;
+    height: 15px;
+    position: absolute;
+    top: 5px;
+    left: 1px;
+}
+
+.fake-browser-ui span {
+    height: 8px;
+    width: 8px;
+    border-radius: 8px;
+    background-color: #eee;
+    border: 1px solid #dadada;
+    float: left;
+    margin: 0 0 0 4px;
+}
+
+/* login page */
+.login-form {
+    margin: 0 auto 100px auto;
+    max-width: 400px;
+}
+
+/* app page */
+#dashboard {
+     display: none;
+}

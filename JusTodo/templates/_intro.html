@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include '_sidenav.html' %}
+    <div class="center">
+        <h2 class="orange-text text-lighten-2">JusTodo</h2>
+        <h5 class="light black-text">What do you want to do? Just do it !</h5>
+        <div class="row center-block">
+            <div class="fake-browser-ui hoverable card-panel">
+                <div class="frame">
+                    <span class="red"></span>
+                    <span class="blue"></span>
+                    <span class="orange"></span>
+                </div>
+                <img class="responsive-img" src="{{ url_for('static', filename='demo.png') }}">
+            </div>
+        </div>
+        <div class="row">
+            <a href="#login" class="btn waves-effect waves-light red">Get Started</a>
+        </div>
+    </div>
+{% endblock %}

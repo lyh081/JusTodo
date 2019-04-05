@@ -1,0 +1,18 @@
+{% for todo in todos %}
+<div class="row todo card-panel hoverable"
+     data-id="{{ todo.id }}" data-body="{{ todo.body }}" data-done={{ todo.done|tojson }} data-label="{{ todo.label }}">
+    <span class="item-body">
+        <a class="button done-btn" data-href="{{ url_for('.toggle_todo', todo_id=todo.id) }}">
+            <i class="material-icons left">{% if todo.done %}check_box{% else %}check_box_outline_blank{% endif %}</i>
+        </a>
+        <span class="{% if todo.done %}inactive-todo{% else %}active-todo{% endif %}"
+              id="body{{ todo.id }}">{{ todo.body }}</span>
+    </span>
+    <span class="delete-btns right">
+        <a class="right button delete-btn" data-href="{{ url_for('.delete_todo', todo_id=todo.id) }}">
+            <i class="material-icons  left">clear</i>
+        </a>
+    </span>
+    <div class="chip right">{{ todo.label.name }}</div>
+</div>
+{% endfor %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="side-nav">
+        {% include '_sidenav.html' %}
+    </div>
+    <div class="row todo-container">
+        <div class="col s12 m8 l8">
+            <ul class="tabs">
+                    <li class="tab col m4 s12">
+                        <a class="blue-text button" id="all-todo">
+                            All <span class="grey-text small-text" id="all-count">{{ all_count }}</span>
+                        </a>
+                    </li>
+                    <li class="tab col m4 s12">
+                        <a class="blue-text button" id="active-todo">
+                            Active <span class="orange-text small-text" id="active-count">{{ active_count }}</span>
+                        </a>
+                    </li>
+                    <li class="tab col m4 s12">
+                        <a class="blue-text button" id="completed-todo">
+                            Done <span class="grey-text small-text" id="completed-count">{{ completed_count }}</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="todos">
+                    {% include '_todos.html' %}
+                </div>
+                
+        </div>
+        <div class="col s12 m4 l4">
+            <div class="login-form">
+                <div class="col">
+                    <span class="orange-text left">New Todo</span>
+                </div>
+                <input class="validate todo-input" id="body-input" name="body" type="text" placeholder="What do you want to do?"
+                        autofocus required>
+                <div class="col">
+                    <span class="orange-text lighten-1">Label</span>
+                </div>
+                <input class="validate todo-input" id="label-input" name="label" type="text" placeholder="defualt"
+                        required>
+                <span class="right">
+                    <a class="btn orange btn-middle btn-floating waves-effect waves-light right" id="new-todo-btn"><i class="material-icons right">add</i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+{% endblock %}

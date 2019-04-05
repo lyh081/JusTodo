@@ -1,0 +1,25 @@
+{% if current_user.is_authenticated %}
+    <ul id="nav-moblie" class="sidenav sidenav-fixed ">
+        <div class="black" id="sidenav-title">
+            <li><a><i class="material-icons black-text">cloud</i></a></li>
+        </div>
+        <li><a><i class="material-icons orange-text">cloud</i>Labels</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect orange-text label" data-href="{{ url_for('todo.show_todo', label_name='all') }}">ALL Labels<span class="right"">{{ all_count }}</span></a></li>
+        <li><div class="divider"></div></li>
+        {% for label in labels %}
+            <li><a class="waves-effect orange-text label" data-href="{{ url_for('todo.show_todo', label_name=label.name) }}">{{label.name}}<span class="right" id="{{label.name}}">{{ label.todo|length }}</span></a></li>
+            <li><div class="divider"></div></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <ul id="nav-moblie" class="sidenav sidenav-fixed ">
+        <div class="black" id="sidenav-title">
+            <li><a><i class="material-icons black-text">cloud</i></a></li>
+        </div>
+        <li><a class="waves-effect waves-light orange-text" href="#login">Login</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect waves-light orange-text" href="#about">About</a></li>
+        <li><div class="divider"></div></li>
+    </ul>
+{% endif %}
