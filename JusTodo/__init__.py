@@ -1,5 +1,7 @@
 import os
+import logging
 import click
+from logging.handlers import RotatingFileHandler
 from flask import Flask, render_template, request, jsonify
 from flask_login import current_user
 from JusTodo.extensions import db, login_manager, csrf
@@ -9,6 +11,7 @@ from JusTodo.blueprints.auth import auth_bp
 from JusTodo.blueprints.home import home_bp
 from JusTodo.blueprints.todo import todo_bp
 
+basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 def create_app(config_name=None):
     if config_name is None:
@@ -37,6 +40,17 @@ def register_blueprint(app):
     app.register_blueprint(home_bp)
     app.register_blueprint(todo_bp)
 
+
+def register_logging(app):
+    app.logger.setLeverl(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    file_handler = RotatingFileHandler(os.path.join(basedir, 'logs/JusTodo.log'),
+                                       maxBytes=10 * 1024 * 1024, backupCount=10)
+    file_handler.setFormatter(formatter)
+    file_handler.setLevel(logging.INFO)
+
+    if not app.debug:
+        app.logger.addHandler(file_handler)
 
 def register_template_context(app):
     @app.context_processor
