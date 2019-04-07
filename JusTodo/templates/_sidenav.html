@@ -1,5 +1,5 @@
 {% if current_user.is_authenticated %}
-    <ul id="nav-moblie" class="sidenav sidenav-fixed ">
+    <ul id="slide-out" class="sidenav sidenav-fixed ">
         <div class="black" id="sidenav-title">
             <li><a><i class="material-icons black-text">cloud</i></a></li>
         </div>
@@ -12,8 +12,10 @@
             <li><div class="divider"></div></li>
         {% endfor %}
     </ul>
+    <a data-target="slide-out" class="sidenav-trigger hide-on-large-only btn-small orange">Labels</a>
+
 {% else %}
-    <ul id="nav-moblie" class="sidenav sidenav-fixed ">
+    <ul id="slide-out" class="sidenav sidenav-fixed">
         <div class="black" id="sidenav-title">
             <li><a><i class="material-icons black-text">cloud</i></a></li>
         </div>
