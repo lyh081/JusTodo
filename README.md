@@ -20,4 +20,8 @@ $ flask run
 * Running on http://127.0.0.1:5000/
 ```
 
+#### Web API
+
+在线demo中暂时没有部署API
+
 多多指教

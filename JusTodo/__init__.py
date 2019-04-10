@@ -10,7 +10,7 @@ from JusTodo.setting import config
 from JusTodo.blueprints.auth import auth_bp
 from JusTodo.blueprints.home import home_bp
 from JusTodo.blueprints.todo import todo_bp
-
+from JusTodo.api.v1 import api_v1
 basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 def create_app(config_name=None):
@@ -33,12 +33,14 @@ def register_extensions(app):
     db.init_app(app)
     login_manager.init_app(app)
     csrf.init_app(app)
+    csrf.exempt(api_v1)
 
 
 def register_blueprint(app):
     app.register_blueprint(auth_bp)
     app.register_blueprint(home_bp)
     app.register_blueprint(todo_bp)
+    app.register_blueprint(api_v1, url_prefix='/api/v1')
 
 
 def register_logging(app):
@@ -114,10 +116,10 @@ def register_commands(app):
         db.session.add_all([label1, label2])
         db.session.commit()
 
-        todo1 = Todo(body='Witness something truly majestic', author=user, label=label1)
-        todo2 = Todo(body='Help a complete stranger', author=user, label=label1)
-        todo3 = Todo(body='Drive a motorcycle on the Great Wall of China', author=user, label=label2)
-        todo4 = Todo(body='Sit on the Great Egyptian Pyramids', author=user, done=True, label=label2)
+        todo1 = Todo(body='Register JusTdo', author=user, done=True, label=label1)
+        todo2 = Todo(body='Create a new Todo', author=user, label=label1)
+        todo3 = Todo(body='Learn Python this week', author=user, label=label2)
+        todo4 = Todo(body='Life is short, I need Python', author=user, label=label2)
         db.session.add_all([todo1, todo2, todo3, todo4])
         db.session.commit()
         click.echo('Initialized database.')
